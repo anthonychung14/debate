@@ -17,20 +17,6 @@ const client = new ApolloClient({
   }
 });
 
-const getAllAuthors = async () =>
-  await client
-    .query({
-      query: gql`
-        {
-          allAuthors {
-            id
-            fullName
-          }
-        }
-      `
-    })
-    .then(({ data }) => data.allAuthors);
-
 const RESOURCE_MAP = {
   Author: "fullName",
   Creator: "email"
@@ -91,7 +77,7 @@ const App = props => {
       <button onClick={toggleCreate}>Create Source Content</button>
       {formState && (
         <form>
-          <input />
+          <input name="link" />
         </form>
       )}
       {sourceContent.map(i => (
