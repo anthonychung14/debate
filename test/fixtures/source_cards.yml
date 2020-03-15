@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  header: 
+  warrant: MyString
+  subheader: MyString
+
+two:
+  header: 
+  warrant: MyString
+  subheader: MyString

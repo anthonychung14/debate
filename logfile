@@ -1,0 +1,57 @@
+2020-03-14 07:46:50.027 PDT [38130] LOG:  starting PostgreSQL 12.2 on x86_64-apple-darwin18.7.0, compiled by Apple clang version 11.0.0 (clang-1100.0.33.17), 64-bit
+2020-03-14 07:46:50.028 PDT [38130] LOG:  listening on IPv6 address "::1", port 5432
+2020-03-14 07:46:50.028 PDT [38130] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2020-03-14 07:46:50.029 PDT [38130] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2020-03-14 07:46:50.040 PDT [38131] LOG:  database system was shut down at 2020-03-14 07:46:40 PDT
+2020-03-14 07:46:50.043 PDT [38130] LOG:  database system is ready to accept connections
+2020-03-14 07:47:01.215 PDT [38329] FATAL:  database "achung" does not exist
+2020-03-14 07:49:59.817 PDT [38558] LOG:  starting PostgreSQL 12.2 on x86_64-apple-darwin18.7.0, compiled by Apple clang version 11.0.0 (clang-1100.0.33.17), 64-bit
+2020-03-14 07:49:59.818 PDT [38558] LOG:  could not bind IPv6 address "::1": Address already in use
+2020-03-14 07:49:59.818 PDT [38558] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2020-03-14 07:49:59.818 PDT [38558] LOG:  could not bind IPv4 address "127.0.0.1": Address already in use
+2020-03-14 07:49:59.818 PDT [38558] HINT:  Is another postmaster already running on port 5432? If not, wait a few seconds and retry.
+2020-03-14 07:49:59.818 PDT [38558] WARNING:  could not create listen socket for "localhost"
+2020-03-14 07:49:59.819 PDT [38558] FATAL:  could not create any TCP/IP sockets
+2020-03-14 07:49:59.819 PDT [38558] LOG:  database system is shut down
+2020-03-14 07:50:07.140 PDT [38647] FATAL:  database "achung" does not exist
+2020-03-14 07:51:18.255 PDT [38851] FATAL:  database "achung" does not exist
+2020-03-14 10:00:40.583 PDT [40663] FATAL:  role "postgres" does not exist
+2020-03-14 10:37:50.172 PDT [50008] FATAL:  role "postgres" does not exist
+2020-03-14 15:24:28.411 PDT [19157] FATAL:  role "postgres" does not exist
+2020-03-14 15:24:35.066 PDT [19171] FATAL:  role "postgres" does not exist
+2020-03-14 15:24:47.980 PDT [19204] FATAL:  role "postgres" does not exist
+2020-03-14 15:25:19.998 PDT [19268] FATAL:  role "postgres" does not exist
+2020-03-14 15:30:28.171 PDT [19947] FATAL:  role "postgres" does not exist
+2020-03-14 15:33:15.490 PDT [20313] FATAL:  role "postgres" does not exist
+2020-03-14 15:34:22.207 PDT [20458] FATAL:  role "postgres" does not exist
+2020-03-14 15:43:51.981 PDT [22110] FATAL:  database "db" does not exist
+2020-03-14 15:43:57.203 PDT [22122] FATAL:  database "achung" does not exist
+2020-03-14 15:44:17.531 PDT [22162] FATAL:  database "db" does not exist
+2020-03-14 15:45:01.887 PDT [22251] FATAL:  database "achung" does not exist
+2020-03-14 15:45:07.113 PDT [22262] FATAL:  database "achung" does not exist
+2020-03-14 15:46:34.240 PDT [22552] FATAL:  database "achung" does not exist
+2020-03-14 15:46:43.238 PDT [22570] FATAL:  role "postgres" does not exist
+2020-03-14 15:46:51.777 PDT [22589] FATAL:  database "db" does not exist
+2020-03-14 15:46:56.358 PDT [22599] FATAL:  database "db" does not exist
+2020-03-14 15:47:01.218 PDT [22608] FATAL:  database "db" does not exist
+2020-03-14 15:50:21.802 PDT [23014] FATAL:  database "db" does not exist
+2020-03-14 15:55:58.478 PDT [24630] FATAL:  database "db" does not exist
+2020-03-14 17:03:55.465 PDT [34282] FATAL:  database "achung" does not exist
+2020-03-14 17:54:06.430 PDT [43850] ERROR:  type "bignum" does not exist
+2020-03-14 17:54:06.430 PDT [43850] STATEMENT:  ALTER TABLE "source_contents" ALTER COLUMN "publish_date" TYPE bignum
+2020-03-14 17:54:24.583 PDT [44162] ERROR:  type "bignum" does not exist
+2020-03-14 17:54:24.583 PDT [44162] STATEMENT:  ALTER TABLE "source_contents" ALTER COLUMN "publish_date" TYPE bignum
+2020-03-14 17:54:38.037 PDT [44366] ERROR:  type "bignum" does not exist
+2020-03-14 17:54:38.037 PDT [44366] STATEMENT:  ALTER TABLE "source_contents" ALTER COLUMN "publish_date" TYPE bignum
+2020-03-14 18:06:08.321 PDT [46979] ERROR:  column "content_type" does not exist
+2020-03-14 18:06:08.321 PDT [46979] STATEMENT:  ALTER TABLE "source_contents" RENAME COLUMN "content_type" TO "content_category"
+2020-03-14 18:37:19.872 PDT [52415] ERROR:  column "content_type" does not exist
+2020-03-14 18:37:19.872 PDT [52415] STATEMENT:  ALTER TABLE "source_contents" RENAME COLUMN "content_type" TO "content_category"
+2020-03-14 18:37:59.217 PDT [52792] ERROR:  column "content_type" does not exist
+2020-03-14 18:37:59.217 PDT [52792] STATEMENT:  ALTER TABLE "source_contents" RENAME COLUMN "content_type" TO "content_category"
+2020-03-14 18:59:52.028 PDT [57006] ERROR:  column "content_type" does not exist
+2020-03-14 18:59:52.028 PDT [57006] STATEMENT:  ALTER TABLE "source_contents" RENAME COLUMN "content_type" TO "content_category"
+2020-03-14 19:01:43.129 PDT [57463] ERROR:  column "source_content_works" does not exist
+2020-03-14 19:01:43.129 PDT [57463] STATEMENT:  CREATE  INDEX  "index_authors_on_source_content_works" ON "authors"  ("source_content_works")
+2020-03-14 19:06:19.654 PDT [58316] ERROR:  column "source_content_works" does not exist
+2020-03-14 19:06:19.654 PDT [58316] STATEMENT:  CREATE  INDEX  "index_authors_on_source_content_works" ON "authors"  ("source_content_works")
