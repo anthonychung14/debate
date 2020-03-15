@@ -1,0 +1,1 @@
+debate: docker-compose up

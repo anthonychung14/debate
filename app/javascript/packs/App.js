@@ -17,23 +17,88 @@ const client = new ApolloClient({
   }
 });
 
-// client
-//   .query({
-//     query: gql`
-//       {
-//         allAuthors {
-//           id
-//           fullName
-//         }
-//       }
-//     `
-//   })
-//   .then(result => console.log(result));
+const getAllAuthors = async () =>
+  await client
+    .query({
+      query: gql`
+        {
+          allAuthors {
+            id
+            fullName
+          }
+        }
+      `
+    })
+    .then(({ data }) => data.allAuthors);
+
+const RESOURCE_MAP = {
+  Author: "fullName",
+  Creator: "email"
+};
+
+const fetchAllQuery = async resourceName =>
+  await client
+    .query({
+      query: gql`
+        {
+          all${resourceName}s {
+            id
+            ${RESOURCE_MAP[resourceName]}
+          }
+        }
+      `
+    })
+    .then(({ data }) => data[`all${resourceName}s`]);
+
+const useFetchAll = resourceName => {
+  const [data, setData] = React.useState([]);
+
+  React.useEffect(() => {
+    const setFetchAll = async () => {
+      const allQueryData = await fetchAllQuery(resourceName);
+      setData(allQueryData);
+    };
+    setFetchAll();
+  }, [setData]);
+
+  return data;
+};
 
 const App = props => {
+  const data = useFetchAll("Author");
+  const sourceContent = useFetchAll("SourceContent");
+
+  const [formState, setFormState] = React.useState(false);
+  const toggleCreate = React.useCallback(
+    e => {
+      setFormState(!formState);
+    },
+    [formState, setFormState]
+  );
+
   return (
     <ApolloProvider client={client}>
-      <div>App {props.name}!</div>;
+      <h2>Authors</h2>
+      <ol>
+        {data.map(i => (
+          <li key={i.id}>
+            <h4>{i.fullName}</h4>
+          </li>
+        ))}
+      </ol>
+
+      <h2>Source Content</h2>
+      <button onClick={toggleCreate}>Create Source Content</button>
+      {formState && (
+        <form>
+          <input />
+        </form>
+      )}
+      {sourceContent.map(i => (
+        <li key={i.id}>
+          <h4>{i.title}</h4>
+        </li>
+      ))}
     </ApolloProvider>
   );
 };
