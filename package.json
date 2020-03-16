@@ -15,7 +15,10 @@
     "react-hot-loader": "^4.12.20",
     "react-player": "^1.15.2",
     "turbolinks": "^5.2.0",
-    "webpack": "^4.42.0"
+    "webpack": "^4.42.0",
+    "react-select": "^3.0.8",
+    "react-vtree": "^1.0.2",
+    "recompose": "^0.30.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",

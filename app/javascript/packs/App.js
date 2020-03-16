@@ -5,6 +5,7 @@ import { gql } from "apollo-boost";
 
 import YouTubeCutter from "./YouTubeCutter";
 import TextCutter from "./TextCutter";
+import SourceTreeView from "./SourceTreeView";
 
 const client = new ApolloClient({
   fetchOptions: {
@@ -55,8 +56,8 @@ const useFetchAll = resourceName => {
 };
 
 const App = props => {
-  // const data = useFetchAll("Author");
-  // const sourceContent = useFetchAll("SourceContent");
+  const data = useFetchAll("Author");
+  const sourceContent = useFetchAll("SourceContent");
 
   const [formState, setFormState] = React.useState(true);
   const toggleCreate = React.useCallback(
@@ -70,33 +71,11 @@ const App = props => {
     console.log("e.target.value is", e.target.value);
   }, []);
 
+  console.log("data is", data);
+
   return (
     <ApolloProvider client={client}>
-      {/* <h2>Authorssss</h2>
-      <ol>
-        {data.map(i => (
-          <li key={i.id}>
-            <h4>{i.fullName}</h4>
-          </li>
-        ))}
-      </ol> */}
-
-      <YouTubeCutter />
-      {/* <h2>Source Content</h2>
-      <button onClick={toggleCreate}>Create Source Content</button>
-      {formState && (
-        <form>
-          <input name="link" onBlur={fetchLink} />
-        </form>
-      )}
-
-      <ol>
-        {sourceContent.map(i => (
-          <li key={i.id}>
-            <h4>{i.title}</h4>
-          </li>
-        ))}
-      </ol> */}
+      <SourceTreeView />
     </ApolloProvider>
   );
 };
