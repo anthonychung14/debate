@@ -212,7 +212,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   dotenv-rails
-  graphiql-rails (= 1.7.0)
+  graphiql-rails
   graphql
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
