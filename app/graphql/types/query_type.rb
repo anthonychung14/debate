@@ -10,6 +10,10 @@ module Types
       Creator.all
     end
 
+    def all_excerpts
+      Excerpt.all
+    end
+
     def all_source_contents
       SourceContent.all
     end
@@ -17,5 +21,6 @@ module Types
     field :all_authors, [AuthorType], null: false
     field :all_creators, [CreatorType], null: false
     field :all_source_contents, [SourceContentType], null: false
+    field :all_excerpts, [ExcerptType], null: false
   end
 end

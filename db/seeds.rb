@@ -7,4 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Creator.create(email: "anthonychung14@gmail.com")
-Author.create([{ fullName: "David Goggins" }, { fullName: "William Lane Craig" }, { fullName: 'Siraj Raval'}])
+Author.create([{ full_name: "David Goggins" }, { full_name: "William Lane Craig" }, { full_name: "Siraj Raval" }])
+SourceContent.create(title: "Dr Cox Rants", link: "https://www.youtube.com/watch?v=t-b6GIo1g68", content_category: "YOUTUBE")
+SourceContent.create(title: "A podcast to scrape", link: "http://content.blubrry.com/52716/20040104TheDoctrineofGodPart1.mp3", content_category: "PODCAST")

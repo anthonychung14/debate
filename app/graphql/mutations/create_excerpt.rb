@@ -7,10 +7,11 @@ module Mutations
 
     # return type from the mutation
     # type Types::AuthorType
+    field :ok, Boolean, null: false
 
     def resolve(content_id: nil, start_position: nil, end_position: nil)
       Excerpt.create!(
-        source_contents_id: content_id,
+        source_content_id: content_id,
         start_position: start_position,
         end_position: end_position,
       )

@@ -1,5 +1,5 @@
 class SourceCard < ApplicationRecord
-  has_one :card_creator
-  has_one :source_content
-  has_one :excerpt
+  belongs_to :card_creator
+  belongs_to :source_content
+  belongs_to :excerpt
 end

@@ -1,4 +1,4 @@
 class Excerpt < ApplicationRecord
-  belongs_to :source_card
-  has_one :source_content
+  has_many :source_cards
+  belongs_to :source_content
 end

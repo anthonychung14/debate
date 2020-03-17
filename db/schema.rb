@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_16_213654) do
+ActiveRecord::Schema.define(version: 2020_03_17_173910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,9 +50,12 @@ ActiveRecord::Schema.define(version: 2020_03_16_213654) do
   create_table "excerpts", force: :cascade do |t|
     t.integer "start_position"
     t.integer "end_position"
-    t.integer "source_content_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "source_content_id", null: false
+    t.bigint "source_card_id", null: false
+    t.index ["source_card_id"], name: "index_excerpts_on_source_card_id"
+    t.index ["source_content_id"], name: "index_excerpts_on_source_content_id"
   end
 
   create_table "source_cards", force: :cascade do |t|
@@ -61,6 +64,8 @@ ActiveRecord::Schema.define(version: 2020_03_16_213654) do
     t.string "subheader"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "creator_id", null: false
+    t.index ["creator_id"], name: "index_source_cards_on_creator_id"
   end
 
   create_table "source_content_works", force: :cascade do |t|
@@ -82,4 +87,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_213654) do
 
   add_foreign_key "authors_source_content_works", "authors", column: "authors_id"
   add_foreign_key "authors_source_content_works", "source_contents", column: "source_contents_id"
+  add_foreign_key "excerpts", "source_cards"
+  add_foreign_key "excerpts", "source_contents"
+  add_foreign_key "source_cards", "creators"
 end
