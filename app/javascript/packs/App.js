@@ -8,9 +8,6 @@ import TextCutter from "./TextCutter";
 import SourceTreeView from "./SourceTreeView";
 
 const client = new ApolloClient({
-  fetchOptions: {
-    credentials: "same-origin"
-  },
   request: operation => {
     const csrfToken = document
       .querySelector("meta[name=csrf-token]")
