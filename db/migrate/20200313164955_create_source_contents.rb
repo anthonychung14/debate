@@ -5,7 +5,7 @@ class CreateSourceContents < ActiveRecord::Migration[6.0]
       t.string :title
       t.string :subtitle
       t.string :publisher
-      t.bignum :publish_date
+      t.bigint :publish_date
       t.string :content_category
       t.timestamps
     end
