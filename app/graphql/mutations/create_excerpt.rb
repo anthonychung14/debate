@@ -10,7 +10,7 @@ module Mutations
 
     def resolve(content_id: nil, start_position: nil, end_position: nil)
       Excerpt.create!(
-        content_id: content_id,
+        source_contents_id: content_id,
         start_position: start_position,
         end_position: end_position,
       )
