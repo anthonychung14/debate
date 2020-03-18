@@ -21,13 +21,13 @@ module Debate
     # https://medium.com/@admatbandara/setting-up-cors-to-my-rails-api-a6184e461a0f
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins "localhost:3000", "127.0.0.1:3000", "https://provisor-0-1.firebaseapp.com/", "http://provisor-0-1.firebaseapp.com/",
-                resource(
-                  "*",
-                  headers: :any,
-                  credentials: true,
-                  methods: [:get, :patch, :put, :delete, :post, :options],
-                )
+        origins "*"
+        resource(
+          "*",
+          headers: :any,
+          credentials: true,
+          methods: [:get, :patch, :put, :delete, :post, :options],
+        )
       end
     end
   end
