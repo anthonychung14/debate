@@ -25,7 +25,6 @@ module Debate
         resource(
           "*",
           headers: :any,
-          credentials: true,
           methods: [:get, :patch, :put, :delete, :post, :options],
         )
       end
