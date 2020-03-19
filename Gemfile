@@ -12,6 +12,9 @@ gem "rails", "~> 6.0.2", ">= 6.0.2.1"
 gem "pg", "~> 0.21"
 gem "dotenv-rails"
 gem "rack-cors"
+gem "sidekiq"
+gem "redis"
+
 # Use Puma as the app server
 gem "puma", "~> 4.1"
 # Use SCSS for stylesheets
