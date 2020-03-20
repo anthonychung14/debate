@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_17_173910) do
+ActiveRecord::Schema.define(version: 2020_03_20_223305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,21 +22,20 @@ ActiveRecord::Schema.define(version: 2020_03_17_173910) do
     t.string "occupation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "airtable_key"
+    t.string "notes"
+    t.string "gif_url"
+    t.string "giphy_id"
+    t.string "address"
+    t.string "city"
+    t.integer "zipcode"
   end
 
-  create_table "authors_source_content_works", force: :cascade do |t|
+  create_table "authors_source_contents", force: :cascade do |t|
     t.bigint "authors_id"
     t.bigint "source_contents_id"
-    t.index ["authors_id"], name: "index_authors_source_content_works_on_authors_id"
-    t.index ["source_contents_id"], name: "index_authors_source_content_works_on_source_contents_id"
-  end
-
-  create_table "card_creators", force: :cascade do |t|
-    t.string "email"
-    t.string "name"
-    t.string "string"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.index ["authors_id"], name: "index_authors_source_contents_on_authors_id"
+    t.index ["source_contents_id"], name: "index_authors_source_contents_on_source_contents_id"
   end
 
   create_table "creators", force: :cascade do |t|
@@ -53,8 +52,6 @@ ActiveRecord::Schema.define(version: 2020_03_17_173910) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "source_content_id", null: false
-    t.bigint "source_card_id", null: false
-    t.index ["source_card_id"], name: "index_excerpts_on_source_card_id"
     t.index ["source_content_id"], name: "index_excerpts_on_source_content_id"
   end
 
@@ -68,26 +65,26 @@ ActiveRecord::Schema.define(version: 2020_03_17_173910) do
     t.index ["creator_id"], name: "index_source_cards_on_creator_id"
   end
 
-  create_table "source_content_works", force: :cascade do |t|
-    t.string "authors"
-    t.string "source_contents"
-  end
-
   create_table "source_contents", force: :cascade do |t|
     t.string "link"
     t.string "title"
     t.string "subtitle"
     t.string "publisher"
     t.bigint "publish_date"
-    t.string "medium"
+    t.string "content_category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "content_category"
+    t.string "content_medium"
+    t.bigint "author_id", default: 1, null: false
+    t.string "gif_url"
+    t.string "giphy_id"
+    t.string "synopsis"
+    t.index ["author_id"], name: "index_source_contents_on_author_id"
   end
 
-  add_foreign_key "authors_source_content_works", "authors", column: "authors_id"
-  add_foreign_key "authors_source_content_works", "source_contents", column: "source_contents_id"
-  add_foreign_key "excerpts", "source_cards"
+  add_foreign_key "authors_source_contents", "authors", column: "authors_id"
+  add_foreign_key "authors_source_contents", "source_contents", column: "source_contents_id"
   add_foreign_key "excerpts", "source_contents"
   add_foreign_key "source_cards", "creators"
+  add_foreign_key "source_contents", "authors"
 end

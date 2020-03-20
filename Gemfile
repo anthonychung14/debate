@@ -14,6 +14,7 @@ gem "dotenv-rails"
 gem "rack-cors"
 gem "sidekiq"
 gem "redis"
+gem "airtable"
 
 # Use Puma as the app server
 gem "puma", "~> 4.1"
