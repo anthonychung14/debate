@@ -18,9 +18,25 @@ module Types
       SourceContent.all
     end
 
+    def content_works_by_id(author_id:)
+      SourceContent.where(author_id: author_id)
+    end
+
+    def excerpts_by_id(source_content_id:)
+      Excerpt.where(source_content_id: source_content_id)
+    end
+
     field :all_authors, [AuthorType], null: false
     field :all_creators, [CreatorType], null: false
     field :all_source_contents, [SourceContentType], null: false
     field :all_excerpts, [ExcerptType], null: false
+
+    field :content_works_by_id, [SourceContentType], null: false, description: "returns a collection of content given an author's id" do
+      argument :author_id, ID, required: true
+    end
+
+    field :excerpts_by_id, [ExcerptType], null: false, description: "returns a collection of excerpts given a content source's id" do
+      argument :source_content_id, ID, required: true
+    end
   end
 end
