@@ -19,8 +19,6 @@ module Mutations
         author: Author.find(author_id),
         content_category: content_category,
       )
-      # assign a content_category based on the link url within the worker
-
     end
   end
 end
