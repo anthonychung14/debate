@@ -6,4 +6,5 @@ class Types::ContentCategory < Types::BaseEnum
     value "BOOK", "A written, published work distributed to the public"
     value "MOVIE", "Motion picture, may have audio"
     value "YOUTUBE", "A community made video"
+    value "OTHER", "Yet to be categorized"
   end

@@ -1,18 +1,26 @@
 module Mutations
   class CreateSourceContent < BaseMutation
-    # arguments passed to the `resolve` method
-    # argument :content_category, Types::ContentCategory, required: true
     argument :link, String, required: false
     argument :author_id, ID, required: false
 
-    # field :content_category, Types::ContentCategory, null: false
     field :link, String, null: false
 
     def resolve(link: nil, author_id: nil)
+      content_category = if link.end_with? "mp3"
+          "PODCAST"
+        elsif link.include? "youtu"
+          "YOUTUBE"
+        else
+          "OTHER"
+        end
+
       SourceContent.create!(
         link: link,
         author: Author.find(author_id),
+        content_category: content_category,
       )
+      # assign a content_category based on the link url within the worker
+
     end
   end
 end
