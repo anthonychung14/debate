@@ -4,5 +4,6 @@ class Types::ContentCategory < Types::BaseEnum
     value "BLOG_POST", "A self-published, short-form article"
     value "ACADEMIC_ARTICLE", "A peer-reviewed article published through an academic institution"
     value "BOOK", "A written, published work distributed to the public"
-    value "VIDEO", "Motion picture, may have audio"
+    value "MOVIE", "Motion picture, may have audio"
+    value "YOUTUBE", "A community made video"
   end
