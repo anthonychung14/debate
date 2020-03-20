@@ -11,7 +11,7 @@ module Mutations
     def resolve(link: nil, author_id: nil)
       SourceContent.create!(
         link: link,
-        author_id: author_id,
+        author: Author.find(author_id),
       )
     end
   end
