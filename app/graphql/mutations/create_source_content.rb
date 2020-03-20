@@ -1,20 +1,17 @@
 module Mutations
   class CreateSourceContent < BaseMutation
     # arguments passed to the `resolve` method
-    argument :content_category, Types::ContentCategory, required: true
+    # argument :content_category, Types::ContentCategory, required: true
     argument :link, String, required: false
-    argument :subtitle, String, required: false
-    argument :title, String, required: false
+    argument :author_id, ID, required: false
 
-    field :title, String, null: false
-    field :content_category, Types::ContentCategory, null: false
+    # field :content_category, Types::ContentCategory, null: false
+    field :link, String, null: false
 
-    def resolve(title: nil, link: nil, content_category: nil, subtitle: nil)
+    def resolve(link: nil, author_id: nil)
       SourceContent.create!(
-        title: title,
-        subtitle: subtitle,
-        content_category: content_category,
         link: link,
+        author_id: author_id,
       )
     end
   end
