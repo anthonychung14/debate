@@ -31,11 +31,11 @@ module Types
     field :all_source_contents, [SourceContentType], null: false
     field :all_excerpts, [ExcerptType], null: false
 
-    field :content_works_by_id, [SourceContentType], null: false, description: "returns a collection of content given an author's id" do
+    field :source_contents_for_author, [SourceContentType], null: false, description: "returns a collection of content given an author's id" do
       argument :author_id, ID, required: true
     end
 
-    field :excerpts_by_id, [ExcerptType], null: false, description: "returns a collection of excerpts given a content source's id" do
+    field :excerpts_for_content, [ExcerptType], null: false, description: "returns a collection of excerpts given a content source's id" do
       argument :source_content_id, ID, required: true
     end
   end

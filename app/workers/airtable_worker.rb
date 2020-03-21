@@ -19,7 +19,6 @@ class AirtableWorker
         address: item[:address],
         city: item[:city],
         zipcode: item[:zipcode],
-        airtable_key: item[:id],
       })
     end
 
