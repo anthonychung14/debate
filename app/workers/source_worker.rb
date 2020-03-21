@@ -2,7 +2,6 @@ class SourceWorker
   include Sidekiq::Worker
 
   def perform()
-    puts "STARTING WORK <============>"
     @client = Airtable::Client.new("keyXl84W0rtRUuOEV")
     @table = @client.table("appO4vBVgVx66KFPX", "textSource")
 

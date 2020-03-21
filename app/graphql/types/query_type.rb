@@ -3,7 +3,7 @@ module Types
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
     def all_authors
-      Author.all
+      Author.all.order(:full_name)
     end
 
     def all_creators
