@@ -23,7 +23,7 @@ class AirtableWorker
 
     records.each do |item|
       author_ids = item[:author_id]
-      authors = ContentMaker.where(:airtable_key => author_ids)
+      content_makers = ContentMaker.where(:airtable_key => author_ids)
 
       content = SourceContent.create!({
         content_category: item[:content_category],
@@ -35,7 +35,7 @@ class AirtableWorker
         subtitle: item[:subtitle],
         synopsis: item[:synopsis],
         title: item[:title],
-        content_makers: authors,
+        content_makers: content_makers,
       })
     end
 

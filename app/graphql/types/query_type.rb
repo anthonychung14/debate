@@ -3,7 +3,7 @@ module Types
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
     def all_content_makers
-      ContentMakers.all.order(:full_name)
+      ContentMaker.all.order(:full_name)
     end
 
     def all_creators
@@ -19,7 +19,8 @@ module Types
     end
 
     def source_contents_for_content_maker(content_maker_id:)
-      SourceContent.where(content_makers: content_maker_id)
+      contentMaker = ContentMaker.find(content_maker_id)
+      contentMaker.source_contents
     end
 
     def excerpts_for_content(source_content_id:)
@@ -32,7 +33,7 @@ module Types
     field :all_excerpts, [ExcerptType], null: false
 
     field :source_contents_for_content_maker, [SourceContentType], null: false, description: "returns a collection of content given an author's id" do
-      argument :author_id, ID, required: true
+      argument :content_maker_id, ID, required: true
     end
 
     field :excerpts_for_content, [ExcerptType], null: false, description: "returns a collection of excerpts given a content source's id" do
