@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_20_223305) do
+ActiveRecord::Schema.define(version: 2020_03_21_011617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_03_20_223305) do
     t.string "occupation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "airtable_key"
+    t.string "airtable_key"
     t.string "notes"
     t.string "gif_url"
     t.string "giphy_id"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 2020_03_20_223305) do
     t.string "gif_url"
     t.string "giphy_id"
     t.string "synopsis"
+    t.string "series_name"
     t.index ["author_id"], name: "index_source_contents_on_author_id"
   end
 

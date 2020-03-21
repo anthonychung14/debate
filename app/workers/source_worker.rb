@@ -10,24 +10,23 @@ class SourceWorker
 
     records.each do |item|
       author_ids = item[:author_id]
+      authors = Author.where(:airtable_key => author_ids)
 
-      new_source = SourceContent.create!({
-        link: item[:link],
-        subtitle: item[:subtitle],
+      content = SourceContent.create!({
         content_category: item[:content_category],
         content_medium: item[:content_medium],
-        synopsis: item[:synopsis],
         gif_url: item[:gif_url],
         giphy_id: item[:giphy_id],
+        link: item[:link],
+        series_name: item[:series_name],
+        subtitle: item[:subtitle],
+        synopsis: item[:synopsis],
+        title: item[:title],
       })
 
-      #   updated_source = SourceContent.find_by(link: item[:link])
-      # take the id and append to Author's source_content_ids
-      authors = Author.where(airtable_key: author_ids)
-
-      authors.each { |a| a.update_all source_content_ids: a[:source_content_ids].push(new_source[:id]) }
+      if !authors.first.nil?
+        SourceContent.update(content[:id], :author_id => authors.first[:id])
+      end
     end
-
-    puts "Done with work"
   end
 end
