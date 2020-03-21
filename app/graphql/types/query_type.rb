@@ -18,11 +18,11 @@ module Types
       SourceContent.all
     end
 
-    def content_works_by_id(author_id:)
+    def source_contents_for_author(author_id:)
       SourceContent.where(author_id: author_id)
     end
 
-    def excerpts_by_id(source_content_id:)
+    def excerpts_for_content(source_content_id:)
       Excerpt.where(source_content_id: source_content_id)
     end
 
