@@ -16,7 +16,8 @@ module Mutations
 
       SourceContent.create!(
         link: link,
-        author: Author.find(author_id),
+        # author: Author.find(author_id),
+        author_id: author_id,
         content_category: content_category,
       )
     end
