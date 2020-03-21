@@ -2,8 +2,8 @@ module Types
   class QueryType < Types::BaseObject
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
-    def all_authors
-      Author.all.order(:full_name)
+    def all_content_makers
+      ContentMakers.all.order(:full_name)
     end
 
     def all_creators
@@ -18,20 +18,20 @@ module Types
       SourceContent.all
     end
 
-    def source_contents_for_author(author_id:)
-      SourceContent.where(author_id: author_id)
+    def source_contents_for_content_maker(content_maker_id:)
+      SourceContent.where(content_makers: content_maker_id)
     end
 
     def excerpts_for_content(source_content_id:)
       Excerpt.where(source_content_id: source_content_id)
     end
 
-    field :all_authors, [AuthorType], null: false
+    field :all_content_makers, [ContentMakerType], null: false
     field :all_creators, [CreatorType], null: false
     field :all_source_contents, [SourceContentType], null: false
     field :all_excerpts, [ExcerptType], null: false
 
-    field :source_contents_for_author, [SourceContentType], null: false, description: "returns a collection of content given an author's id" do
+    field :source_contents_for_content_maker, [SourceContentType], null: false, description: "returns a collection of content given an author's id" do
       argument :author_id, ID, required: true
     end
 

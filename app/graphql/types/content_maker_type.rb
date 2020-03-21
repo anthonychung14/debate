@@ -1,5 +1,5 @@
 module Types
-  class AuthorType < Types::BaseObject
+  class ContentMakerType < Types::BaseObject
     field :full_name, String, null: true
     field :source_contents, SourceContentType.connection_type, null: true
     field :occupation, String, null: true

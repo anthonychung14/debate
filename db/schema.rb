@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_21_035730) do
+ActiveRecord::Schema.define(version: 2020_03_21_210006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,25 @@ ActiveRecord::Schema.define(version: 2020_03_21_035730) do
     t.bigint "source_contents_id"
     t.index ["authors_id"], name: "index_authors_source_contents_on_authors_id"
     t.index ["source_contents_id"], name: "index_authors_source_contents_on_source_contents_id"
+  end
+
+  create_table "content_makers", force: :cascade do |t|
+    t.string "full_name"
+    t.string "instagramHandle"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "airtable_key"
+    t.string "notes"
+    t.string "address"
+    t.string "city"
+    t.integer "zipcode"
+  end
+
+  create_table "content_makers_source_contents", force: :cascade do |t|
+    t.bigint "content_maker_id", null: false
+    t.bigint "source_content_id", null: false
+    t.index ["content_maker_id"], name: "index_content_makers_source_contents_on_content_maker_id"
+    t.index ["source_content_id"], name: "index_content_makers_source_contents_on_source_content_id"
   end
 
   create_table "creators", force: :cascade do |t|
@@ -75,17 +94,16 @@ ActiveRecord::Schema.define(version: 2020_03_21_035730) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "content_medium"
-    t.bigint "author_id", default: 1, null: false
     t.string "gif_url"
     t.string "giphy_id"
     t.string "synopsis"
     t.string "series_name"
-    t.index ["author_id"], name: "index_source_contents_on_author_id"
   end
 
   add_foreign_key "authors_source_contents", "authors", column: "authors_id"
   add_foreign_key "authors_source_contents", "source_contents", column: "source_contents_id"
+  add_foreign_key "content_makers_source_contents", "content_makers"
+  add_foreign_key "content_makers_source_contents", "source_contents"
   add_foreign_key "excerpts", "source_contents"
   add_foreign_key "source_cards", "creators"
-  add_foreign_key "source_contents", "authors"
 end
