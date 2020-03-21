@@ -19,8 +19,8 @@ class AirtableWorker
         address: item[:address],
         city: item[:city],
         zipcode: item[:zipcode],
+        airtable_key: item[:id],
       })
-      puts item[:id]
     end
 
     puts "Done with work"
