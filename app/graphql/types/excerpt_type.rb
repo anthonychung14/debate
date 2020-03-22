@@ -3,5 +3,6 @@ module Types
     field :content, SourceContentType, null: false
     field :start_position, Int, null: false
     field :end_position, Int, null: false
+    field :link, String, null: true
   end
 end

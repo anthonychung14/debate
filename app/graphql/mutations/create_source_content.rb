@@ -6,7 +6,7 @@ module Mutations
     argument :content_maker_id, ID, required: false
 
     field :link, String, null: false
-    field :title, String, null: false
+    field :title, String, null: true
     field :id, ID, null: false
     field :content_category, Types::ContentCategory, null: false
 

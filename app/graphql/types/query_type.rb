@@ -31,7 +31,7 @@ module Types
       contentMaker.source_contents
     end
 
-    def excerpts_for_content(source_content_id:)
+    def excerpts_for_source_content(source_content_id:)
       Excerpt.where(source_content_id: source_content_id)
     end
 
@@ -50,7 +50,7 @@ module Types
       argument :content_maker_id, ID, required: true
     end
 
-    field :excerpts_for_content, [ExcerptType], null: false, description: "returns a collection of excerpts given a content source's id" do
+    field :excerpts_for_source_content, [ExcerptType], null: false, description: "returns a collection of excerpts given a content source's id" do
       argument :source_content_id, ID, required: true
     end
   end
