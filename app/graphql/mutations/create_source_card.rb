@@ -7,7 +7,7 @@ module Mutations
     argument :subheader, String, required: false
 
     # return type from the mutation
-    type Types::SourceCard
+    type Types::SourceCardType
 
     def resolve(excerpt_id: nil, header: nil, warrant: nil, subheader: nil)
       SourceCard.create!(
@@ -17,7 +17,7 @@ module Mutations
         subheader: subheader,
       )
 
-      puts "<< ++++++++++++++++++ >>"
+      puts "<< ++++++++++++++++++ CREATED SOURCE CARD +++++++++++++++++++++ >>"
     end
   end
 end
