@@ -10,33 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_22_140254) do
+ActiveRecord::Schema.define(version: 2020_03_23_191401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "authors", force: :cascade do |t|
-    t.string "full_name"
-    t.string "education"
-    t.text "description"
-    t.string "occupation"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "airtable_key"
-    t.string "notes"
-    t.string "gif_url"
-    t.string "giphy_id"
-    t.string "address"
-    t.string "city"
-    t.integer "zipcode"
-  end
-
-  create_table "authors_source_contents", force: :cascade do |t|
-    t.bigint "authors_id"
-    t.bigint "source_contents_id"
-    t.index ["authors_id"], name: "index_authors_source_contents_on_authors_id"
-    t.index ["source_contents_id"], name: "index_authors_source_contents_on_source_contents_id"
-  end
+  enable_extension "uuid-ossp"
 
   create_table "content_makers", force: :cascade do |t|
     t.string "full_name"
@@ -48,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_140254) do
     t.string "address"
     t.string "city"
     t.integer "zipcode"
+    t.uuid "uuid", default: -> { "uuid_generate_v4()" }, null: false
   end
 
   create_table "content_makers_source_contents", force: :cascade do |t|
@@ -63,6 +42,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_140254) do
     t.string "string"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.uuid "uuid", default: -> { "uuid_generate_v4()" }, null: false
   end
 
   create_table "excerpts", force: :cascade do |t|
@@ -73,6 +53,13 @@ ActiveRecord::Schema.define(version: 2020_03_22_140254) do
     t.bigint "source_content_id", null: false
     t.string "link"
     t.string "image_link"
+    t.uuid "uuid", default: -> { "uuid_generate_v4()" }, null: false
+    t.string "text_content"
+    t.string "content_medium"
+    t.string "gif_url"
+    t.string "giphy_id"
+    t.string "airtable_key"
+    t.string "title"
     t.index ["source_content_id"], name: "index_excerpts_on_source_content_id"
   end
 
@@ -83,6 +70,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_140254) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "creator_id", null: false
+    t.uuid "uuid", default: -> { "uuid_generate_v4()" }, null: false
     t.index ["creator_id"], name: "index_source_cards_on_creator_id"
   end
 
@@ -102,10 +90,10 @@ ActiveRecord::Schema.define(version: 2020_03_22_140254) do
     t.string "series_name"
     t.string "md5hash"
     t.string "image_link"
+    t.uuid "uuid", default: -> { "uuid_generate_v4()" }, null: false
+    t.string "airtable_key"
   end
 
-  add_foreign_key "authors_source_contents", "authors", column: "authors_id"
-  add_foreign_key "authors_source_contents", "source_contents", column: "source_contents_id"
   add_foreign_key "content_makers_source_contents", "content_makers"
   add_foreign_key "content_makers_source_contents", "source_contents"
   add_foreign_key "excerpts", "source_contents"

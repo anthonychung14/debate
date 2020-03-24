@@ -27,6 +27,7 @@ class AirtableWorker
 
       content = SourceContent.create!({
         content_category: item[:content_category],
+        airtable_key: item[:id],
         content_medium: item[:content_medium],
         gif_url: item[:gif_url],
         giphy_id: item[:giphy_id],
@@ -36,6 +37,25 @@ class AirtableWorker
         synopsis: item[:synopsis],
         title: item[:title],
         content_makers: content_makers,
+      })
+    end
+
+    @excerpts = @client.table("appO4vBVgVx66KFPX", "excerpt")
+    records = @excerpts.all
+
+    records.each do |item|
+      source_id = item[:source_id]
+      source_content = SourceContent.find_by(:airtable_key => source_id)
+      puts source_content
+
+      excerpt = Excerpt.create!({
+        airtable_key: item[:id],
+        content_medium: item[:content_medium],
+        gif_url: item[:gif_url],
+        giphy_id: item[:giphy_id],
+        link: item[:link],
+        source_content_id: source_content[:id],
+        text_content: item[:content],
       })
     end
 
