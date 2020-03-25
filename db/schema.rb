@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_23_191401) do
+ActiveRecord::Schema.define(version: 2020_03_24_205646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,7 +71,10 @@ ActiveRecord::Schema.define(version: 2020_03_23_191401) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "creator_id", null: false
     t.uuid "uuid", default: -> { "uuid_generate_v4()" }, null: false
+    t.bigint "excerpt_id", null: false
+    t.string "gif_url"
     t.index ["creator_id"], name: "index_source_cards_on_creator_id"
+    t.index ["excerpt_id"], name: "index_source_cards_on_excerpt_id"
   end
 
   create_table "source_contents", force: :cascade do |t|
@@ -98,4 +101,5 @@ ActiveRecord::Schema.define(version: 2020_03_23_191401) do
   add_foreign_key "content_makers_source_contents", "source_contents"
   add_foreign_key "excerpts", "source_contents"
   add_foreign_key "source_cards", "creators"
+  add_foreign_key "source_cards", "excerpts"
 end
