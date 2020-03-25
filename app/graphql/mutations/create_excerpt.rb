@@ -25,7 +25,7 @@ module Mutations
       url = SourceContent.find(content_id)
 
       puts "<< ++++++++++++++++++ >>"
-      response = Net::HTTP.post_form(URI.parse("http://127.0.0.1:5000/process_audio"), { url: url[:link], start_position: 0, end_position: 15, excerpt_id: e[:id] })
+      response = Net::HTTP.post_form(URI.parse("https://snaker-scraper.herokuapp.com/process_audio"), { url: url[:link], start_position: start_position, end_position: end_position, excerpt_id: e[:id] })
       puts "<< POSTED TO PYTHON >>"
       return e
     end
